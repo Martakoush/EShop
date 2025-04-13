@@ -6,6 +6,7 @@ import CartItem from './CartItem'
 import { selectCartItems } from '../../app/CartSlice'
 import CartBottom from './CartBottom'
 
+
 const Cart = () => {
   const dispatch = useDispatch()
   const ifCartState = useSelector(selectCartState)
@@ -16,7 +17,7 @@ const Cart = () => {
   const selectItems = useSelector(selectCartItems)
   return (
     <div
-      className={`fixed top-0 right-0 h-screen w-[500px] bg-white dark:bg-gray-700 shadow-lg z-50 transform transition-transform duration-300 ease-in-out
+      className={`fixed top-0 right-0 h-screen w-full sm:w-[500px] bg-white/90 dark:bg-gray-700 shadow-lg z-50 transform transition-transform duration-300 ease-in-out
         ${ifCartState ? 'translate-x-0' : 'translate-x-full'}
       `}
     >
