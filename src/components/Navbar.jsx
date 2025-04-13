@@ -2,6 +2,10 @@ import React from 'react'
 import {IoMdSearch} from 'react-icons/io';
 import {FaCaretDown, FaShoppingCart} from 'react-icons/fa'
 import DarkMode from './DarkMode';
+import { setOpenCart } from '../app/CartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {selectCartQTY } from '../app/CartSlice'
+
 
 const MenuLinks = [
     {
@@ -45,6 +49,12 @@ const DropdownLinks =[
 ]
 
 const Navbar = ({handleOrderPopup}) => {
+    const QTY = useSelector(selectCartQTY)
+    const dispatch = useDispatch()
+    const onCartToggle= ()=>{
+        dispatch(setOpenCart({cartState:true}))
+    }
+
     return (
         <div className='bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40'>
             <div className='py-4'>
@@ -88,9 +98,9 @@ const Navbar = ({handleOrderPopup}) => {
                             <input type='text' placeholder='Search' className='search-bar'></input>
                             <IoMdSearch className='text-xl group-hover:text-primary duration-200 text-gray-600 dark:text-gray-400 absolute top-1/2 -translate-y-1/2 right-3'></IoMdSearch>
                         </div>
-                        <button className='relative cursor-pointer p-3' onClick={handleOrderPopup}>
-                            <FaShoppingCart className='text-xl text-gray-600 dark:text-gray-400'></FaShoppingCart>
-                            <div className='w-4 h-4 bg-red-500 text-white rounded-full absolute top-0 right-0 flex items-center justify-center text-xs'>4</div>
+                        <button className='relative cursor-pointer p-3'>
+                            <FaShoppingCart onClick={onCartToggle} className='text-xl text-gray-600 dark:text-gray-400'></FaShoppingCart>
+                            <div className='w-4 h-4 bg-red-500 text-white rounded-full absolute top-0 right-0 flex items-center justify-center text-xs'>{QTY}</div>
                         </button>
                         <div>
                             <DarkMode></DarkMode>

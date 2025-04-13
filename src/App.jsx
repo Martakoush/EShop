@@ -14,6 +14,8 @@ import Footer from './components/Footer'
 import Popup from './components/Popup'
 import AOS from 'aos';
 import 'aos/dist/aos.css'
+import Cart from './components/Cart/Cart'
+import { Toaster } from "react-hot-toast";
 
 const BannerData = {
   discount: '30% OFF',
@@ -56,6 +58,7 @@ const App = () => {
   },[])
   return (
     <div className='bg-white dark:bg-gray-900 dark:text-white duration-200 overflow-hidden'>
+      <Toaster position="top-center" reverseOrder={false} />
       <Navbar handleOrderPopup={handleOrderPopup}></Navbar>
       <Hero handleOrderPopup={handleOrderPopup}></Hero>
       <Category></Category>
@@ -68,6 +71,7 @@ const App = () => {
       <Partners></Partners>
       <Footer></Footer>
       <Popup orderPopup={orderPopup} handleOrderPopup={handleOrderPopup}></Popup>
+      <Cart></Cart>
     </div>
   )
 }
